@@ -1,0 +1,233 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Blog API"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "register user.",
+                "operationId": "registeruser",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "user register",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " user login .",
+                "operationId": "userlogin",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "user login",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user logout.",
+                "operationId": "logoutuser",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/post": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "List of  all post.",
+                "operationId": "kuchbhi",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Create new post",
+                "operationId": "kuchbhi2",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "post object that needs to be added to the posts",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/post"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/like/{id}": {
+            "get": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "List of  all likes.",
+                "operationId": "alllike",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "post id that needs to be added to the show all like",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/like"
+                        }
+                    }
+                ],
+
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Like"
+                ],
+                "summary": "Create new likes",
+                "operationId": "createlike",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "like post",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/like"
+                        }
+                      },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "post id that needs to be added to the likes",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/like"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "post": {
+            "type": "object",
+            "properties": {
+                "Title": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                }
+            }
+        },
+        "like": {
+            "type": "object",
+            "properties": {
+                "Like": {
+                    "type": "boolean"
+                },
+                "Dislike": {
+                    "type": "boolean"
+                },
+                "post_id": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
